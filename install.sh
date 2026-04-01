@@ -28,9 +28,12 @@ backup_and_link() {
 
 echo ""
 echo "==> Linking config files..."
-backup_and_link "$DOTFILES_DIR/vimrc"       "$HOME/.vimrc"
-backup_and_link "$DOTFILES_DIR/tmux.conf"   "$HOME/.tmux.conf"
-backup_and_link "$DOTFILES_DIR/zshrc"       "$HOME/.zshrc"
+backup_and_link "$DOTFILES_DIR/bash_profile" "$HOME/.bash_profile"
+backup_and_link "$DOTFILES_DIR/gitconfig"    "$HOME/.gitconfig"
+backup_and_link "$DOTFILES_DIR/tmux.conf"    "$HOME/.tmux.conf"
+backup_and_link "$DOTFILES_DIR/vimrc"        "$HOME/.vimrc"
+backup_and_link "$DOTFILES_DIR/zprofile"     "$HOME/.zprofile"
+backup_and_link "$DOTFILES_DIR/zshrc"        "$HOME/.zshrc"
 
 # vimrc sources ~/.vim/vimrc.bundles, so place it there
 mkdir -p "$HOME/.vim"

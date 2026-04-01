@@ -1,3 +1,5 @@
+" Last updated: 2026-04-01
+
 " Vimrc
 
 filetype off " Automatically detect file types.

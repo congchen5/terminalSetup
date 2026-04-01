@@ -1,3 +1,5 @@
+" Last updated: 2026-04-01
+
 Plugin 'gmarik/Vundle.vim'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'rking/ag.vim'

@@ -1,3 +1,5 @@
+# Last updated: 2026-04-01
+
 # Enable coloring in ls
 alias ls="ls -G"
 
