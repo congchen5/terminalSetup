@@ -5,16 +5,10 @@ DOTFILES_DIR="$(cd "$(dirname "$0")" && pwd)"
 
 echo "Installing dotfiles from $DOTFILES_DIR"
 
-# Helper: backs up a file if it exists and is not already a symlink to our file
-backup_and_link() {
+# Helper: backs up existing file then copies the new one into place
+backup_and_copy() {
     src="$1"
     dest="$2"
-
-    # If dest is already a symlink pointing to src, skip
-    if [ -L "$dest" ] && [ "$(readlink "$dest")" = "$src" ]; then
-        echo "  [skip] $dest already linked"
-        return
-    fi
 
     # Back up existing file
     if [ -e "$dest" ]; then
@@ -22,22 +16,22 @@ backup_and_link() {
         mv "$dest" "$dest.bak"
     fi
 
-    ln -sf "$src" "$dest"
-    echo "  [link] $src -> $dest"
+    cp "$src" "$dest"
+    echo "  [copy] $src -> $dest"
 }
 
 echo ""
-echo "==> Linking config files..."
-backup_and_link "$DOTFILES_DIR/bash_profile" "$HOME/.bash_profile"
-backup_and_link "$DOTFILES_DIR/gitconfig"    "$HOME/.gitconfig"
-backup_and_link "$DOTFILES_DIR/tmux.conf"    "$HOME/.tmux.conf"
-backup_and_link "$DOTFILES_DIR/vimrc"        "$HOME/.vimrc"
-backup_and_link "$DOTFILES_DIR/zprofile"     "$HOME/.zprofile"
-backup_and_link "$DOTFILES_DIR/zshrc"        "$HOME/.zshrc"
+echo "==> Copying config files..."
+backup_and_copy "$DOTFILES_DIR/bash_profile" "$HOME/.bash_profile"
+backup_and_copy "$DOTFILES_DIR/gitconfig"    "$HOME/.gitconfig"
+backup_and_copy "$DOTFILES_DIR/tmux.conf"    "$HOME/.tmux.conf"
+backup_and_copy "$DOTFILES_DIR/vimrc"        "$HOME/.vimrc"
+backup_and_copy "$DOTFILES_DIR/zprofile"     "$HOME/.zprofile"
+backup_and_copy "$DOTFILES_DIR/zshrc"        "$HOME/.zshrc"
 
 # vimrc sources ~/.vim/vimrc.bundles, so place it there
 mkdir -p "$HOME/.vim"
-backup_and_link "$DOTFILES_DIR/vimrc.bundles" "$HOME/.vim/vimrc.bundles"
+backup_and_copy "$DOTFILES_DIR/vimrc.bundles" "$HOME/.vim/vimrc.bundles"
 
 echo ""
 echo "==> Installing Vundle..."
