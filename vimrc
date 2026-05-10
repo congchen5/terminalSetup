@@ -90,7 +90,7 @@ set ttyscroll=3
 set lazyredraw
 
 " copy and cut to OS clipboard
-set clipboard=unnamedplus
+set clipboard=unnamed
 
 " Highlights all matches during search
 set hlsearch
