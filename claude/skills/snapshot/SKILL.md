@@ -16,7 +16,7 @@ Then:
 2. **Extract context** — goals, decisions, current state, file paths, gotchas, next steps
 3. **Check for existing file** — read and merge if it exists at:
    ```
-   /Users/congchen/.claude/projects/-Users-congchen-persona/memory/<slug>.md
+   ~/.claude/projects/<project-slug>/memory/<slug>.md
    ```
 4. **Write the snapshot** with these sections (omit empty ones):
    - Overview
